@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.box {
+  margin: 5px;
+  border: 1px;
+  border-style: solid;
+}
+
+.dirbox {
+  margin: 5px;
+  border: 1px;
+  border-style: dotted;
+}

@@ -1,0 +1,69 @@
+<h1>Simple Template-driven Purchase form</h1>
+<form (formValueChange)="formValue.set($event)" (ngSubmit)="submit()">
+  <div>
+    <label>
+      <span>First name</span>
+      <input class="input input-bordered" type="text" [ngModel]="vm.formValue.firstName" name="firstName" />
+    </label>
+  </div>
+  <div>
+    <label>
+      <span>Last name</span>
+      <input class="input input-bordered" type="text" [ngModel]="vm.formValue.lastName" name="lastName" />
+    </label>
+  </div>
+  <div>
+    <label>
+      <span>Age</span>
+      <input class="input input-bordered" type="number" [ngModel]="vm.formValue.age" name="age" />
+    </label>
+  </div>
+  <div>
+    <label>
+      <span>Emergency contact</span>
+      <input class="input input-bordered" type="text" [ngModel]="vm.formValue.emergencyContactNumber"
+        name="emergencyContactNumber" [disabled]="vm.emergencyContactDisabled" />
+    </label>
+  </div>
+  <div>
+    <label>
+      <span>Gender</span>
+      Male
+      <input class="input input-bordered" type="radio" [ngModel]="vm.formValue.gender" name="gender" value="male" />
+      Female
+      <input class="input input-bordered" type="radio" [ngModel]="vm.formValue.gender" name="gender" value="female" />
+      Other
+      <input class="input input-bordered" type="radio" [ngModel]="vm.formValue.gender" name="gender" value="other" />
+    </label>
+  </div>
+  <div>
+    <label>
+      <input class="input input-bordered other-gender" [ngModel]="vm.formValue.genderOther" name="genderOther"
+        [attr.type]="vm.showOtherGender? 'text': 'hidden'" />
+    </label>
+  </div>
+  <div ngModelGroup="addresses">
+    <div ngModelGroup="billingAddress">
+      <h2>Billing address</h2>
+      <app-address-form [address]="vm.formValue.addresses?.billingAddress">
+      </app-address-form>
+    </div>
+    <label>
+      <span>Shipping addresss is different from billing address</span>
+      <input class="input input-bordered" type="checkbox" name="shippingAddressDifferentFromBillingAddress" [ngModel]="
+          vm.formValue.addresses?.shippingAddressDifferentFromBillingAddress
+        " />
+    </label>
+    <div *ngIf="vm.showShippingAddress" ngModelGroup="shippingAddress">
+      <h2>Shipping address</h2>
+      <app-address-form [address]="vm.formValue.addresses?.shippingAddress">
+      </app-address-form>
+    </div>
+  </div>
+  <div class="buttons">
+    <button class="btn" type="submit">Submit</button>
+  </div>
+  <pre>
+    {{ vm.formValue | json }}
+  </pre>
+</form>

@@ -1,0 +1,18 @@
+<h1>Simple Template-driven Purchase form</h1>
+<!-- <form #form="ngForm"> -->
+<form (formValueChange)="userForm.set($event)">
+  <div>
+    <label for=""><span>First name</span>
+      <input type="text" class="input input-bordered" name="firstName" [ngModel]="userForm().firstName">
+    </label>
+  </div>
+  <div>
+    <label for=""><span>Last name</span>
+      <input type="text" class="input input-bordered" name="lastName" [ngModel]="userForm().lastName">
+    </label>
+  </div>
+  <pre>{{userForm() | json}}</pre>
+  <div class="buttons">
+    <button type="submit" class="btn">Submit</button>
+  </div>
+</form>

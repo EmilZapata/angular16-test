@@ -1,0 +1,31 @@
+<form (formValueChange)="formValue.set($event)">
+  <div>
+    <label>
+      Nombre:
+      <input type="text" name="name" class="input input-bordered" ngModel />
+    </label>
+  </div>
+  <div>
+    <label>
+      Apellido:
+      <input type="text" name="lastName" class="input input-bordered" ngModel />
+    </label>
+  </div>
+  <div ngModelGroup="address">
+    <div>
+      <label>
+        Departamento:
+        <input type="text" name="departamento" class="input input-bordered" ngModel />
+      </label>
+    </div>
+    <div>
+      <label>
+        Distrito:
+        <input type="text" name="distrito" class="input input-bordered" ngModel />
+      </label>
+    </div>
+  </div>
+</form>
+{{
+formValue() | json
+}}
